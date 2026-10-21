@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  KiroOS 1.0 Developer Beta 5 - local manifest
+  On top of LineageOS 14.1 (cm-14.1): put this file in .repo/local_manifests/ and repo sync.
+  The projects KiroOS changed come from github.com/KiroOS-Project (branch kiroos-5.0).
+-->
+<manifest>
+  <remote name="kiroos" fetch="https://github.com/KiroOS-Project" revision="kiroos-5.0" />
+
+  <!-- LineageOS projects replaced by the KiroOS ones -->
+  <remove-project name="LineageOS/android_bionic" />
+  <remove-project name="LineageOS/android_bootable_recovery" />
+  <remove-project name="LineageOS/android_build" />
+  <remove-project name="LineageOS/android_external_ffmpeg" />
+  <remove-project name="LineageOS/android_external_stagefright-plugins" />
+  <remove-project name="LineageOS/android_frameworks_av" />
+  <remove-project name="LineageOS/android_frameworks_base" />
+  <remove-project name="LineageOS/android_frameworks_native" />
+  <remove-project name="LineageOS/android_libcore" />
+  <remove-project name="LineageOS/android_packages_apps_CMParts" />
+  <remove-project name="LineageOS/android_packages_apps_Settings" />
+  <remove-project name="LineageOS/android_packages_apps_SetupWizard" />
+  <remove-project name="LineageOS/android_packages_inputmethods_LatinIME" />
+  <remove-project name="LineageOS/android_vendor_cm" />
+  <remove-project name="LineageOS/android_external_chromium-webview_prebuilt_x86" />
+  <remove-project name="LineageOS/android_external_chromium-webview_prebuilt_x86_64" />
+
+  <project path="bionic" name="kiroos_bionic" remote="kiroos" groups="pdk" />
+  <project path="bootable/recovery" name="kiroos_bootable_recovery" remote="kiroos" groups="pdk" />
+  <project path="build" name="kiroos_build" remote="kiroos" groups="pdk">
+    <copyfile src="core/root.mk" dest="Makefile" />
+  </project>
+  <project path="external/ffmpeg" name="kiroos_external_ffmpeg" remote="kiroos" />
+  <project path="external/stagefright-plugins" name="kiroos_external_stagefright-plugins" remote="kiroos" />
+  <project path="frameworks/av" name="kiroos_frameworks_av" remote="kiroos" groups="pdk" />
+  <project path="frameworks/base" name="kiroos_frameworks_base" remote="kiroos" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/native" name="kiroos_frameworks_native" remote="kiroos" groups="pdk" />
+  <project path="libcore" name="kiroos_libcore" remote="kiroos" groups="pdk" />
+  <project path="packages/apps/CMParts" name="kiroos_packages_apps_CMParts" remote="kiroos" />
+  <project path="packages/apps/Settings" name="kiroos_packages_apps_Settings" remote="kiroos" groups="pdk-fs" />
+  <project path="packages/apps/SetupWizard" name="kiroos_packages_apps_SetupWizard" remote="kiroos" />
+  <project path="packages/inputmethods/LatinIME" name="kiroos_packages_inputmethods_LatinIME" remote="kiroos" groups="pdk-fs" />
+  <project path="vendor/cm" name="kiroos_vendor_cm" remote="kiroos" />
+
+  <!-- KiroOS -->
+  <project path="packages/apps/KiroOS" name="kiroos_packages_apps_KiroOS" remote="kiroos" />
+
+  <!-- Galaxy S6 (zerofltexx), S6 edge (zeroltexx), S6 edge+ (zenltexx) -->
+  <project path="device/samsung/universal7420-common" name="kiroos_device_samsung_zero-common" remote="kiroos" />
+  <project path="device/samsung/zerofltexx" name="kiroos_device_samsung_zerofltexx" remote="kiroos" />
+  <project path="device/samsung/zeroltexx" name="kiroos_device_samsung_zeroltexx" remote="kiroos" />
+  <project path="device/samsung/zenltexx" name="kiroos_device_samsung_zenltexx" remote="kiroos" />
+  <project path="kernel/samsung/exynos7420" name="kiroos_kernel_samsung_exynos7420" remote="kiroos" />
+  <project path="hardware/samsung" name="kiroos_hardware_samsung" remote="kiroos" />
+  <project path="hardware/samsung_slsi-cm/exynos" name="kiroos_hardware_samsung_slsi-cm_exynos" remote="kiroos" />
+  <project path="device/samsung/noblelte-common" name="kiroos_device_samsung_noblelte-common" remote="kiroos" />
+  <project path="vendor/samsung" name="kiroos_vendor_samsung" remote="kiroos" clone-depth="1" />
+
+  <!-- the rest of the Exynos 7420 support, unchanged from LineageOS -->
+  <project path="hardware/samsung_slsi-cm/exynos5" name="LineageOS/android_hardware_samsung_slsi-cm_exynos5" remote="github" revision="cm-14.1" />
+  <project path="hardware/samsung_slsi-cm/exynos7420" name="LineageOS/android_hardware_samsung_slsi-cm_exynos7420" remote="github" revision="cm-14.1" />
+  <project path="hardware/samsung_slsi-cm/openmax" name="LineageOS/android_hardware_samsung_slsi-cm_openmax" remote="github" revision="cm-14.1" />
+  <project path="external/stlport" name="LineageOS/android_external_stlport" remote="github" revision="cm-14.1" />
+  <project path="packages/apps/SamsungServiceMode" name="LineageOS/android_packages_apps_SamsungServiceMode" remote="github" revision="cm-14.1" />
+
+  <!-- emulator target for testing the UI on a PC (optional) -->
+  <project path="device/kiroos/kiro_emu_x86_64" name="kiroos_device_kiroos_kiro_emu_x86_64" remote="kiroos" />
+</manifest>
